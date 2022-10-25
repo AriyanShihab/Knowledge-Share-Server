@@ -22,6 +22,16 @@ app.get("/featuredCourses", (req, res) => {
   }
   res.send(onlyFeatured);
 });
+app.get("/topSellingCourses", (req, res) => {
+  const onlyTopSelling = courses.filter(
+    (course) => course.isTopSelling === true
+  );
+
+  if (!onlyTopSelling) {
+    res.send("no data found");
+  }
+  res.send(onlyTopSelling);
+});
 
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
